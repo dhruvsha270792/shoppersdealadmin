@@ -1,6 +1,8 @@
 package com.nexusdevs.shoppersdeal.admin.util;
 
 import java.security.MessageDigest;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +38,20 @@ public class StringUtils {
 			sb.append(NUM_TO_CHAR_ARR[b & 0x0f]);
 		}
 		return sb.toString();
+	}
+	
+	public static String mapToQueryString(Map<String, String> map) {
+	    StringBuilder string = new StringBuilder();
+	    if(map.size() > 0) {
+	        string.append("?");
+	    }
+	    for(Entry<String, String> entry : map.entrySet()) {
+	        string.append(entry.getKey());
+	        string.append("=");
+	        string.append(entry.getValue());
+	        string.append("&");
+	    }
+	    return string.toString();
 	}
 	
 }

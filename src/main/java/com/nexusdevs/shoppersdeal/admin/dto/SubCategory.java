@@ -1,10 +1,11 @@
 package com.nexusdevs.shoppersdeal.admin.dto;
 
-public class Category {
-	
+public class SubCategory {
+
 	private String id;
 	private String categoryId;
-	private String category;
+	private String subCategoryId;
+	private String subcategory;
 	private long createTime;
 	private long updateTime;
 	private boolean deleted;
@@ -24,13 +25,21 @@ public class Category {
 	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
 	}
-
-	public String getCategory() {
-		return category;
+	
+	public String getSubCategoryId() {
+		return subCategoryId;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setSubCategoryId(String subCategoryId) {
+		this.subCategoryId = subCategoryId;
+	}
+
+	public String getSubcategory() {
+		return subcategory;
+	}
+
+	public void setSubcategory(String subcategory) {
+		this.subcategory = subcategory;
 	}
 
 	public long getCreateTime() {

@@ -2,12 +2,21 @@ package com.nexusdevs.shoppersdeal.admin.dto;
 
 public class UserSession {
 
+	private String id;
 	private String userId;
 	private String token;
 	private boolean expired;
 	private long validTill;
 	private long createTime;
+	
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	public String getUserId() {
 		return userId;
 	}

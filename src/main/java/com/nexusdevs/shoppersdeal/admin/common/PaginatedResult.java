@@ -1,12 +1,12 @@
 package com.nexusdevs.shoppersdeal.admin.common;
 
-import org.json.simple.JSONArray;
+import com.google.gson.JsonArray;
 
 public class PaginatedResult {
 	private int total;
 	private int n;
 	private int pos;
-	private JSONArray data;
+	private JsonArray data;
 
 	public int getTotal() {
 		return total;
@@ -32,11 +32,11 @@ public class PaginatedResult {
 		this.pos = pos;
 	}
 
-	public JSONArray getData() {
+	public JsonArray getData() {
 		return data;
 	}
 
-	public void setData(JSONArray data) {
+	public void setData(JsonArray data) {
 		this.data = data;
 	}
 

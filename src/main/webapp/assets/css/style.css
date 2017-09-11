@@ -562,7 +562,7 @@ footer  p a:hover{
     overflow-y: visible;
 }
 .logo a {
-    font-size: 0.7em;
+    font-size: 0.5em;
     color: #fff;
     margin: 0;
     text-decoration: none;
@@ -1043,7 +1043,7 @@ ul.nav li a span {
     position: fixed;
     top: 0;
     left: 200px;
-    width: 100%;
+    width: 90%;
     z-index: 100;
 }
 
@@ -5141,10 +5141,10 @@ canvas#doughnut {
   height: 400px;
 }
 canvas#line{
-    width: 404px !important;
+    width: 356px !important;
 }
 canvas#bar {
-    width: 404px !important;
+    width: 356px !important;
 }
 .panel .panel-heading {
     padding: 21px 20px;
