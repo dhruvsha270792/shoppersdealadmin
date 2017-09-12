@@ -1,3 +1,3 @@
 'use strict'
 
-var shoppersApp=angular.module('shoppersApp',[]);
+var shoppersApp=angular.module('shoppersApp',['ui.router','angularUtils.directives.dirPagination']);
