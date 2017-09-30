@@ -1,0 +1,1 @@
+shoppersApp.controller('pageContentController',['$scope', function($scope){}]);

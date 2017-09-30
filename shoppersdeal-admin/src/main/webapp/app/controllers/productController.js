@@ -1,0 +1,1 @@
+shoppersApp.controller('productController',['$scope','productService', function($scope, productService){}]);

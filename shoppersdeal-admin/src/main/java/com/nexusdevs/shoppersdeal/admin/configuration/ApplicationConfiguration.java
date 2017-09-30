@@ -21,7 +21,6 @@ public class ApplicationConfiguration {
 	@Bean
 	public ApiConfig getApiConfig() {
 		ApiConfig config = new ApiConfig();
-		System.out.println(env.getProperty("api.server.url"));
 		config.setApiUrl(env.getProperty("api.server.url"));
 		return config;
 	}

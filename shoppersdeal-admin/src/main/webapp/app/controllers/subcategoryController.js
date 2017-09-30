@@ -1,0 +1,1 @@
+shoppersApp.controller('subcategoryController',['$scope','subcategoryService', function($scope, subcategoryService){}]);

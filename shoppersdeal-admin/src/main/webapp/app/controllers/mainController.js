@@ -1,3 +1,1 @@
-shoppersApp.controller('mainController',['$scope', function($scope){
-	
-}]);
+shoppersApp.controller('mainController',['$scope','mainService', function($scope, mainService){}]);
