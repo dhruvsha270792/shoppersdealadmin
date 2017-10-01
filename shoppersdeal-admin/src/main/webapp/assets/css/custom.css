@@ -1,0 +1,65 @@
+/* here you can put your own css to customize and override the theme */
+
+.btn {
+	z-index: 0 !important;
+}
+
+.actions {
+    float: right;
+}
+
+.pagination {
+    margin: 0 !important;
+}
+
+a[ ng-click ] {
+    color: red ;
+    cursor: pointer ;
+}
+
+div.m-modals {
+    background-color: rgba( 0, 0, 0, 0.8 ) ;
+    bottom: 0px ;
+    left: 0px ;
+    position: fixed ;
+    right: 0px ;
+    top: 0px ;
+}
+
+div.m-modals.ng-hide {
+    background-color: rgba( 0, 0, 0, 0 );
+}
+
+.modal-header {
+    background: #435060;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 15px;
+}
+
+.modal-title {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.modal-dialog {
+    top: 30px;
+    width: 40%;
+}
+
+.modal {
+    display: block !important;
+    z-index: 999 !important;
+}
+
+a.jump {
+    color: #999999 ;
+}
+
+a.jump:hover {
+    background-color: gold ;
+    color: #000000 ;
+}
+
+.form-group.custom {
+    margin: 0;
+}

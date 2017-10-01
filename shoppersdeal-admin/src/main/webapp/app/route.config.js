@@ -81,60 +81,6 @@ angular.module('shoppersApp')
         templateUrl: 'view/productDetail.html',
     })
     
-    .state('category.list', {
-        url: '/list',
-        templateUrl: 'view/category/listCategory.html',
-        controller: 'categoryController'
-    })
-    
-    .state('category.create', {
-        url: '/create',
-        templateUrl: 'view/category/createCategory.html',
-        controller: 'categoryController'
-    })
-
-    .state('category.detail', {
-        url: '/detail/:categoryId',
-        templateUrl: 'view/category/detailCategory.html',
-        controller: 'categoryController'
-    })
-    
-    .state('category.update', {
-        url: '/update/:categoryId',
-        templateUrl: 'view/category/updateCategory.html',
-        controller: 'categoryController'
-    })
-    
-    .state('subcategory', {
-        url: '/subcategory',
-        templateUrl: 'view/indexSubcategory.html',
-        redirectTo: 'subcategory.list'
-    })
-    
-    .state('subcategory.list', {
-        url: '/list',
-        templateUrl: 'view/subcategory/listSubcategory.html',
-        controller: 'subcategoryController'
-    })
-    
-    .state('subcategory.create', {
-        url: '/create',
-        templateUrl: 'view/subcategory/createSubcategory.html',
-        controller: 'subcategoryController'
-    })
-
-    .state('subcategory.detail', {
-        url: '/detail/:categoryId/:subcategoryId',
-        templateUrl: 'view/subcategory/detailSubcategory.html',
-        controller: 'subcategoryController'
-    })
-    
-    .state('subcategory.update', {
-        url: '/update/:categoryId/:subcategoryId',
-        templateUrl: 'view/subcategory/updateSubcategory.html',
-        controller: 'subcategoryController'
-    })
-    
 	.state('error',{
 		url: "/error",
 		templateUrl: "error.html",
@@ -149,7 +95,7 @@ angular.module('shoppersApp')
 	.state('unauthorized',{
 		url: "/unauthorized",
 		templateUrl: "unauthrorized.html",
-		
 	})
+	
 	$urlRouterProvider.otherwise("/");
 });

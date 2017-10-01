@@ -1,0 +1,73 @@
+<div class="m-modals" ng-show="subview" ng-switch="subview" ng-controller="modalController" custom-modals>
+	<div ng-switch-when="categoryCreate" ng-init="createCategoryModal();">
+		<div class="modal-dialog">
+			<div class="modal-content" ng-controller="categoryController">
+				<form ng-submit="submit(form);">
+					
+					<div class="modal-header">
+						<button class="close" type="button" ng-click="close();"></button>
+						<h4 class="modal-title">Create New Category</h4>
+					</div>
+
+					<div class="modal-body">
+						<div class="form-horizontal">
+							<div class="form-body">
+								<div class="form-group custom">
+									<div class="col-md-3">
+										<label class="control-label">Category Name</label>
+									</div>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="form.categoryName">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<button class="btn dark btn-outline" type="button" ng-click="close();">Close</button>
+						<button class="btn green" type="submit">Save</button>
+					</div>
+					
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div ng-switch-when="categoryUpdate" ng-init="updateCategoryModal();">
+		<div class="modal-dialog">
+			<div class="modal-content" ng-controller="categoryController">
+				<form ng-submit="submit(form);">
+					<div class="modal-header">
+						<button class="close" type="button" ng-click="close();"></button>
+						<h4 class="modal-title">Update Category</h4>
+					</div>
+
+					<div class="modal-body">
+						<div class="form-horizontal">
+							<div class="form-body">
+								<div class="form-group custom">
+									<div class="col-md-3">
+										<label class="control-label">Category Name</label>
+									</div>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="form.categoryName">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<button class="btn dark btn-outline" type="button" ng-click="close();">Close</button>
+						<button class="btn green" type="submit">Save</button>
+					</div>
+					
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+</div>
