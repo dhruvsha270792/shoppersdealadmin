@@ -13,7 +13,12 @@
 }
 
 a[ ng-click ] {
-    color: red ;
+    color: #337ab7;
+    cursor: pointer ;
+}
+
+a[ ng-click ]:hover{
+    color: #23527c;
     cursor: pointer ;
 }
 
@@ -62,4 +67,8 @@ a.jump:hover {
 
 .form-group.custom {
     margin: 0;
+}
+
+.horizontal-gap {
+    margin: 10px;
 }

@@ -24,7 +24,6 @@ angular.module("shoppersApp")
         else if (previousDeferred) {
             previousDeferred.reject();
         }
-        
         $rootScope.$emit("modals.open", type);
         return(modals.deferred.promise);
     }

@@ -29,6 +29,37 @@ shoppersApp.controller('categoryController',['$scope','categoryService','$state'
         );
     }
 	
+	$scope.categoryDetail = function(category) {
+		var promise = modals.open("categoryDetail", { 
+			categoryName : category.categoryName,
+			createTime : category.createTime,
+			updateTime : category.updateTime
+			});
+        promise.then(
+            function handleResolve(response){},
+            function handleReject(response){
+                console.warn("Alert Rejected.");
+            }
+        );
+	}
+	
+	$scope.categoryDelete = function(category){
+		console.log("delete")
+		var promise = modals.open("categoryDelete", { categoryName : category.categoryName});
+        promise.then(
+            function handleResolve(response){
+            	if(response) {
+            		categoryService.deleteCategory({ categoryId : category.categoryId}).success(function(resp){
+                		$state.go("category");
+                	});
+            	}
+            },
+            function handleReject(response){
+                console.warn("Alert Rejected.");
+            }
+        );
+	}
+	
 	$scope.getCategoryList = function() {
 		categoryService.getCategoryList().success(function(response){
 			$scope.categoryList = response.data;

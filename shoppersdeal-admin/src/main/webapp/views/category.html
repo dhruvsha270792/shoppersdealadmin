@@ -84,12 +84,12 @@
 							</thead>
 							<tbody>
 								<tr ng-class="{even: $even, odd: $odd}" ng-repeat="category in categoryList">
-									<td><a ui-sref="default">{{category.categoryName}}</a></td>
+									<td><a ng-click="categoryDetail(category)">{{category.categoryName}}</a></td>
 									<td>{{category.createTime | dateFormat:"dd/MM/yyyy hh:mm a"}}</td>
 									<td>{{category.updateTime | dateFormat:"dd/MM/yyyy hh:mm a"}}</td>
 									<td style="text-align: center">
 										<a ng-click="categoryUpdate(category)" class="btn green-haze btn-outline btn-circle btn-sm"> &nbsp; Edit  &nbsp;</a>
-										<a ng-click= "deleteCategory(category);" class="btn red btn-outline btn-circle btn-sm">Delete</a>
+										<a ng-click= "categoryDelete(category);" class="btn red btn-outline btn-circle btn-sm">Delete</a>
 									</td>
 								</tr>
 							</tbody>

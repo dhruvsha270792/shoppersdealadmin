@@ -31,11 +31,16 @@ shoppersApp.factory('categoryService', [ '$http','$rootScope', function($http, $
 	function _getCategoryUpdate(category) {
 		return $http.post($rootScope.SERVER_BASEURL+'/c/update/category', category, config);
 	}
+	
+	function _getCategoryDelete(category) {
+		return $http.post($rootScope.SERVER_BASEURL+'/c/delete/category', category, config);
+	}
 
 	return {
 		getCategoryList:_getCategoryList,
 		getCategoryDetail:_getCategoryDetail,
 		createCategory:_createCategory,
-		updateCategory:_getCategoryUpdate
+		updateCategory:_getCategoryUpdate,
+		deleteCategory:_getCategoryDelete
 	}
 }]);
