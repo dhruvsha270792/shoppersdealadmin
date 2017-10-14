@@ -1,4 +1,4 @@
-shoppersApp.controller('categoryController',['$scope','categoryService','$state','modals','$rootScope', function($scope, categoryService, $state, modals, $rootScope) {
+adminApp.controller('categoryController',['$scope','categoryService','$state','modals','$rootScope', function($scope, categoryService, $state, modals, $rootScope) {
 	
 	$scope.categoryCreate = function(){
         var promise = modals.open("categoryCreate");

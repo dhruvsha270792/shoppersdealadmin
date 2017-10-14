@@ -1,4 +1,4 @@
-shoppersApp.factory('productService', [ '$http','$rootScope', function($http, $rootScope) {
+adminApp.factory('productService', [ '$http','$rootScope', function($http, $rootScope) {
 	
 	var config = {
 			header: {

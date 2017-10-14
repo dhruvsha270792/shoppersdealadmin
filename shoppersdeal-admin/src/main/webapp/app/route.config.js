@@ -1,4 +1,4 @@
-angular.module('shoppersApp')
+angular.module('adminApp')
 .run(['$rootScope', '$state',function($rootScope, $state) {
 	$rootScope.SERVER_BASEURL="http://localhost:8080/sdp";
 	

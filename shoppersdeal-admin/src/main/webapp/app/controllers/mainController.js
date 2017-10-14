@@ -1,1 +1,1 @@
-shoppersApp.controller('mainController',['$scope','mainService', function($scope, mainService){}]);
+adminApp.controller('mainController',['$scope','mainService', function($scope, mainService){}]);

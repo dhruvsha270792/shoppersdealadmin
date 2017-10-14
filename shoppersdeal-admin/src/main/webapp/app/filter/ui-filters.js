@@ -1,4 +1,4 @@
-angular.module('shoppersApp')
+angular.module('adminApp')
 .filter('dateFormat', function($filter,$rootScope) {
 	return function (dateString, format) {
         if(dateString === 0) {

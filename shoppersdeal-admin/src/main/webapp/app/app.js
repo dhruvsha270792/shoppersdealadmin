@@ -1,3 +1,3 @@
 'use strict'
 
-var shoppersApp=angular.module('shoppersApp',['ui.router','angularUtils.directives.dirPagination','angular.chosen','ngTagsInput']);
+var adminApp=angular.module('adminApp',['ui.router','angularUtils.directives.dirPagination','angular.chosen','ngTagsInput']);

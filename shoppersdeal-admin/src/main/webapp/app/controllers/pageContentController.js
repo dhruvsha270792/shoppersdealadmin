@@ -1,1 +1,1 @@
-shoppersApp.controller('pageContentController',['$scope', function($scope){}]);
+adminApp.controller('pageContentController',['$scope', function($scope){}]);

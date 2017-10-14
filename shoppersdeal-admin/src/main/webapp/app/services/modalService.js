@@ -1,4 +1,4 @@
-angular.module("shoppersApp")
+angular.module("adminApp")
 .service("modals", function($rootScope, $q) {
     var modals = {
         deferred: null,

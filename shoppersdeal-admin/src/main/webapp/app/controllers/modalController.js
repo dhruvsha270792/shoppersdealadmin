@@ -1,4 +1,4 @@
-shoppersApp.controller('modalController',['$scope','modals', '$rootScope', function($scope, modals, $rootScope) {
+adminApp.controller('modalController',['$scope','modals', '$rootScope', function($scope, modals, $rootScope) {
 	$scope.form = {};
 	$scope.categoryName = "";
 	$scope.subcategoryName = "";
@@ -11,7 +11,7 @@ shoppersApp.controller('modalController',['$scope','modals', '$rootScope', funct
         $rootScope.$emit("subcategoryListToModal", $scope.subcategoryList);
     }
 	
-	$scope.dealCategoryList = ['normal','topRated','special','hotDeals'];
+	$scope.dealCategoryList = [{key:'normal', value:'Normal'},{key:'topRated', value:'Top-Rated'},{key:'hotDeals', value:'Hot Deals'}];
 	
 	$scope.createCategoryModal = function(){
 		$scope.form = {};

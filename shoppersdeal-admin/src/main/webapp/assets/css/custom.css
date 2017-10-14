@@ -57,7 +57,7 @@ div.m-modals.ng-hide {
 }
 
 .modal-dialog.full-width {
-	width: 85%;
+	width: 70%;
 	z-index: 999 !important;
 	overflow-y: initial !important;
 }

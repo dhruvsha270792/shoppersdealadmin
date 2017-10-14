@@ -276,7 +276,7 @@
 	</div>
 	
 	
-	<div ng-switch-when="productCreate" ng-init="createProductModal();">
+	<div class="product-create-container" ng-switch-when="productCreate" ng-init="createProductModal();">
 		<div class="modal-dialog full-width">
 			<div class="modal-content">
 				<form ng-submit="submit(form);">
@@ -321,7 +321,7 @@
 									<label class="col-md-3 control-label left">Deal Category :</label>
 									<div class="col-md-9">
 										<select chosen class="form-control" ng-model="form.dealCategory">
-											<option data-ng-repeat="deal in dealCategoryList">{{deal}}</option>
+											<option data-ng-repeat="deal in dealCategoryList" value="{{deal.key}}">{{deal.value}}</option>
                                          </select>
 									</div>
 								</div>

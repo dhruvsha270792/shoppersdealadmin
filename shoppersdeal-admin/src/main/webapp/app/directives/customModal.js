@@ -1,4 +1,4 @@
-angular.module("shoppersApp")
+angular.module("adminApp")
 .directive("customModals", ["$rootScope","modals", function($rootScope, modals) {
     return( link );
     function link(scope, element, attributes) {

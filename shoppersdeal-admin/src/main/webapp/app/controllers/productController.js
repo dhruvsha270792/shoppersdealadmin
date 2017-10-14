@@ -1,4 +1,4 @@
-shoppersApp.controller('productController',['$scope','productService','modals','$state', function($scope, productService, modals, $state) {
+adminApp.controller('productController',['$scope','productService','modals','$state', function($scope, productService, modals, $state) {
 	
 	$scope.productCreate = function(){
         var promise = modals.open("productCreate");

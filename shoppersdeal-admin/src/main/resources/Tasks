@@ -1,0 +1,10 @@
+Subcategory --> CategoryId+CategoryName(API)
+			--> Update CategoryName Problem(API)
+
+Product --> CategyId/CategoryName(API)
+		--> SubcategoryId/SubcategoryName by CategoryId(API)
+		--> Image Upload(API)
+		--> Create Different Articles(Weight+Quantity)
+		--> Add to Solr
+		
+Product --> By Brand(API)

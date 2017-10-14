@@ -1,1 +1,1 @@
-shoppersApp.controller('dashboardController',['$scope','dashboardService', function($scope, dashboardService){}]);
+adminApp.controller('dashboardController',['$scope','dashboardService', function($scope, dashboardService){}]);

@@ -1,5 +1,5 @@
 function autoScroll() {
-    var div = document.getElementById("shoppersApp");
+    var div = document.getElementById("adminApp");
     div.style.display = '';
     var top = div.offsetTop;
     if(window.scrollTop != top) 
