@@ -1,4 +1,4 @@
-shoppersApp.controller('categoryController',['$scope','categoryService','$state','modals', function($scope, categoryService, $state, modals) {
+shoppersApp.controller('categoryController',['$scope','categoryService','$state','modals','$rootScope', function($scope, categoryService, $state, modals, $rootScope) {
 	
 	$scope.categoryCreate = function(){
         var promise = modals.open("categoryCreate");
@@ -8,9 +8,7 @@ shoppersApp.controller('categoryController',['$scope','categoryService','$state'
             		$state.go("category");
             	});
             },
-            function handleReject(response){
-                console.warn("Alert Rejected.");
-            }
+            function handleReject(response){}
         );
     }
 	
@@ -23,9 +21,7 @@ shoppersApp.controller('categoryController',['$scope','categoryService','$state'
             		$state.go("category");
             	});
             },
-            function handleReject(response){
-                console.warn("Alert Rejected.");
-            }
+            function handleReject(response){}
         );
     }
 	
@@ -34,18 +30,12 @@ shoppersApp.controller('categoryController',['$scope','categoryService','$state'
 			categoryName : category.categoryName,
 			createTime : category.createTime,
 			updateTime : category.updateTime
-			});
-        promise.then(
-            function handleResolve(response){},
-            function handleReject(response){
-                console.warn("Alert Rejected.");
-            }
-        );
+		});
+        promise.then(function handleResolve(response){},function handleReject(response){});
 	}
 	
 	$scope.categoryDelete = function(category){
-		console.log("delete")
-		var promise = modals.open("categoryDelete", { categoryName : category.categoryName});
+		var promise = modals.open("categoryDelete", { categoryName : category.categoryName });
         promise.then(
             function handleResolve(response){
             	if(response) {
@@ -54,9 +44,7 @@ shoppersApp.controller('categoryController',['$scope','categoryService','$state'
                 	});
             	}
             },
-            function handleReject(response){
-                console.warn("Alert Rejected.");
-            }
+            function handleReject(response){}
         );
 	}
 	
@@ -66,9 +54,7 @@ shoppersApp.controller('categoryController',['$scope','categoryService','$state'
 		});
 	}
 	
-	$scope.getCategoryDetail = function(){
-		categoryService.getCategoryDetail($state.params.categoryId).success(function(response){
-			$scope.categoryDetail = response;
-		})
-	}
+	$rootScope.$on("categoryListToModal", function(){
+		$scope.getCategoryList();
+    });
 }]);

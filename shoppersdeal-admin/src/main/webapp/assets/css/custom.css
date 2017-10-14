@@ -51,6 +51,22 @@ div.m-modals.ng-hide {
     width: 40%;
 }
 
+.modal-body.product-modal {
+	height: 400px;
+    overflow-y: auto;
+}
+
+.modal-dialog.full-width {
+	width: 85%;
+	z-index: 999 !important;
+	overflow-y: initial !important;
+}
+
+.page-sidebar .sidebar-search .input-group .form-control,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .input-group .form-control {
+	z-index: 0 !important;
+}
+
 .modal {
     display: block !important;
     z-index: 999 !important;
@@ -66,9 +82,43 @@ a.jump:hover {
 }
 
 .form-group.custom {
-    margin: 0;
+    margin: 0 0 10px 0;
+}
+
+.form-group.custom .col-md-3.control-label.left {
+	text-align: left !important;
 }
 
 .horizontal-gap {
     margin: 10px;
+}
+
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+	z-index: 0 !important;
+}
+
+.chosen-container {
+	height: 34px;
+}
+
+.chosen-container-multi .chosen-choices,
+.chosen-container-multi .chosen-choices li.search-field,
+.chosen-container-multi .chosen-choices li.search-field input[type="text"],
+.chosen-container-single .chosen-default,
+.chosen-container-single .chosen-single {
+	height: 100% !important;
+}
+
+.chosen-container-multi .chosen-choices li.search-choice {
+	margin: 2px 0 0 5px !important;
+}
+
+.chosen-container-single .chosen-single span {
+    height: 34px;
+    padding-top: 3px;
 }

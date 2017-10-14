@@ -7,14 +7,14 @@
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <span>Category</span>
+            <span>Products</span>
         </li>
     </ul>
 </div>
 <!-- END PAGE BAR -->
 
 <!-- BEGIN PAGE TITLE-->
-<h3 class="page-title"> Category <small>List</small></h3
+<h3 class="page-title"> Products <small>List</small></h3
 <!-- END PAGE TITLE-->
 <!-- END PAGE HEADER-->
 
@@ -28,7 +28,7 @@
 					<div class="row">
 						<div class="col-md-6 col-lg-6">
 							<div class="btn-group">
-								<button class="btn green" ng-click="categoryCreate()">
+								<button class="btn green" ng-click="productCreate()">
 									Add New <i class="fa fa-plus"></i>
 								</button>
 							</div>
@@ -66,33 +66,36 @@
 							</div>
 						</div>
 					</div> -->
-					<div class="table-scrollable" ng-init="getCategoryList();">
+					<div class="table-scrollable" ng-init="getProductList();">
 						<table class="table table-striped table-hover table-bordered dataTable no-footer">
 							<colgroup>
-								<col width="3%">
-								<col width="35%">
-								<col width="22.5%">
-								<col width="22.5%">
+								<col width="30%">
+								<col width="15%">
+								<col width="15%">
+								<col width="10%">
+								<col width="10%">
 								<col width="17%">
 							</colgroup>
 							<thead>
 								<tr role="row">
-									<th> # </th>
-									<th class="sorting_asc"> Category Name</th>
-									<th class="sorting"> Create Time</th>
-									<th class="sorting"> Update Time</th>
+									<th>Name</th>
+									<th>Category Name</th>
+									<th>Subcategory Name</th>
+									<th>Price</th>
+									<th>Discount</th>
 									<th style="text-align: center"> Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-class="{even: $even, odd: $odd}" ng-repeat="category in categoryList">
-									<td>{{$index+1}}</td>
-									<td><a ng-click="categoryDetail(category)">{{category.categoryName}}</a></td>
-									<td>{{category.createTime | dateFormat:"dd/MM/yyyy hh:mm a"}}</td>
-									<td>{{category.updateTime | dateFormat:"dd/MM/yyyy hh:mm a"}}</td>
+								<tr ng-class="{even: $even, odd: $odd}" ng-repeat="product in productList">
+									<td><a ng-click="productDetail(product)">{{product.compName}} {{product.productName}}</a></td>
+									<td>{{product.category | customSplit}}</td>
+									<td>{{product.subcategory | customSplit}}</td>
+									<td>{{product.price}}</td>
+									<td>{{product.discPrice}}</td>
 									<td style="text-align: center">
-										<a ng-click="categoryUpdate(category)" class="btn green-haze btn-outline btn-circle btn-sm"> &nbsp; Edit  &nbsp;</a>
-										<a ng-click= "categoryDelete(category);" class="btn red btn-outline btn-circle btn-sm">Delete</a>
+										<a ng-click="productUpdate(product)" class="btn green-haze btn-outline btn-circle btn-sm"> &nbsp; Edit  &nbsp;</a>
+										<a ng-click= "productDelete(product);" class="btn red btn-outline btn-circle btn-sm">Delete</a>
 									</td>
 								</tr>
 							</tbody>

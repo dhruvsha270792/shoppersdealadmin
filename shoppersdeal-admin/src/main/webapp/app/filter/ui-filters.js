@@ -8,4 +8,16 @@ angular.module('shoppersApp')
             return $filter('date')(dateString, format.toString());
         }
     };
-});
+})
+.filter('customSplit', function() {
+	return function(input) {
+		var arr = "";
+		if(input instanceof Array) {
+			arr = input.join(", ");
+		}
+		else {
+			arr = '-';
+		}
+		return arr;
+	};
+})

@@ -7,14 +7,14 @@
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <span>Category</span>
+            <span>Subcategory</span>
         </li>
     </ul>
 </div>
 <!-- END PAGE BAR -->
 
 <!-- BEGIN PAGE TITLE-->
-<h3 class="page-title"> Category <small>List</small></h3
+<h3 class="page-title"> Subcategory <small>List</small></h3
 <!-- END PAGE TITLE-->
 <!-- END PAGE HEADER-->
 
@@ -28,7 +28,7 @@
 					<div class="row">
 						<div class="col-md-6 col-lg-6">
 							<div class="btn-group">
-								<button class="btn green" ng-click="categoryCreate()">
+								<button class="btn green" ng-click="subcategoryCreate()">
 									Add New <i class="fa fa-plus"></i>
 								</button>
 							</div>
@@ -57,42 +57,36 @@
 					</div>
 				</div>
 				<div class="dataTables_wrapper no-footer">
-					<!-- <div class="row">
-						<div class="col-md-6 col-sm-6">
-							<div class="actions">
-								<label>Search:
-									<input type="search" class="form-control input-sm input-small input-inline" placeholder="" aria-controls="sample_editable_1">
-								</label>
-							</div>
-						</div>
-					</div> -->
-					<div class="table-scrollable" ng-init="getCategoryList();">
+					<div class="table-scrollable" ng-init="getSubcategoryList();">
 						<table class="table table-striped table-hover table-bordered dataTable no-footer">
 							<colgroup>
 								<col width="3%">
-								<col width="35%">
-								<col width="22.5%">
-								<col width="22.5%">
-								<col width="17%">
+								<col width="26.5%">
+								<col width="18%">
+								<col width="17.5%">
+								<col width="17.5%">
+								<col width="17.5%">
 							</colgroup>
 							<thead>
 								<tr role="row">
 									<th> # </th>
-									<th class="sorting_asc"> Category Name</th>
+									<th class="sorting_asc"> Subcategory Name</th>
+									<th class="sorting"> Category Name</th>
 									<th class="sorting"> Create Time</th>
 									<th class="sorting"> Update Time</th>
 									<th style="text-align: center"> Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-class="{even: $even, odd: $odd}" ng-repeat="category in categoryList">
+								<tr ng-class="{even: $even, odd: $odd}" ng-repeat="subcategory in subcategoryList">
 									<td>{{$index+1}}</td>
-									<td><a ng-click="categoryDetail(category)">{{category.categoryName}}</a></td>
-									<td>{{category.createTime | dateFormat:"dd/MM/yyyy hh:mm a"}}</td>
-									<td>{{category.updateTime | dateFormat:"dd/MM/yyyy hh:mm a"}}</td>
+									<td><a ng-click="subcategoryDetail(subcategory)">{{subcategory.subcategoryName}}</a></td>
+									<td>{{subcategory.categoryId}}</td>
+									<td>{{subcategory.createTime | dateFormat:"dd/MM/yyyy hh:mm a"}}</td>
+									<td>{{subcategory.updateTime | dateFormat:"dd/MM/yyyy hh:mm a"}}</td>
 									<td style="text-align: center">
-										<a ng-click="categoryUpdate(category)" class="btn green-haze btn-outline btn-circle btn-sm"> &nbsp; Edit  &nbsp;</a>
-										<a ng-click= "categoryDelete(category);" class="btn red btn-outline btn-circle btn-sm">Delete</a>
+										<a ng-click="subcategoryUpdate(subcategory)" class="btn green-haze btn-outline btn-circle btn-sm"> &nbsp; Edit  &nbsp;</a>
+										<a ng-click= "subcategoryDelete(subcategory);" class="btn red btn-outline btn-circle btn-sm">Delete</a>
 									</td>
 								</tr>
 							</tbody>
@@ -140,4 +134,4 @@
 		<!-- END EXAMPLE TABLE PORTLET-->
 	</div>
 </div>
-<!-- END CATEGORY LIST -->
+<!-- END SUBCATEGORY LIST -->

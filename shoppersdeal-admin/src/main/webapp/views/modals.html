@@ -2,21 +2,19 @@
 	
 	<div ng-switch-when="categoryCreate" ng-init="createCategoryModal();">
 		<div class="modal-dialog">
-			<div class="modal-content" ng-controller="categoryController">
+			<div class="modal-content">
 				<form ng-submit="submit(form);">
 					
 					<div class="modal-header">
 						<button class="close" type="button" ng-click="close();"></button>
-						<h4 class="modal-title">Create New Category</h4>
+						<h4 class="modal-title">Create Category</h4>
 					</div>
 
 					<div class="modal-body">
 						<div class="form-horizontal">
 							<div class="form-body">
 								<div class="form-group custom">
-									<div class="col-md-3">
-										<label class="control-label">Category Name</label>
-									</div>
+									<label class="col-md-3 control-label left">Category Name:</label>
 									<div class="col-md-9">
 										<input type="text" class="form-control" ng-model="form.categoryName">
 									</div>
@@ -49,9 +47,7 @@
 						<div class="form-horizontal">
 							<div class="form-body">
 								<div class="form-group custom">
-									<div class="col-md-3">
-										<label class="control-label">Category Name</label>
-									</div>
+									<label class="col-md-3 control-label left">Category Name:</label>
 									<div class="col-md-9">
 										<input type="text" class="form-control" ng-model="form.categoryName">
 									</div>
@@ -69,43 +65,6 @@
 			</div>
 		</div>
 	</div>
-	
-	
-	<div ng-switch-when="categoryCreate" ng-init="createCategoryModal();">
-		<div class="modal-dialog">
-			<div class="modal-content" ng-controller="categoryController">
-				<form ng-submit="submit(form);">
-					
-					<div class="modal-header">
-						<button class="close" type="button" ng-click="close();"></button>
-						<h4 class="modal-title">Create New Category</h4>
-					</div>
-
-					<div class="modal-body">
-						<div class="form-horizontal">
-							<div class="form-body">
-								<div class="form-group custom">
-									<div class="col-md-3">
-										<label class="control-label">Category Name</label>
-									</div>
-									<div class="col-md-9">
-										<input type="text" class="form-control" ng-model="form.categoryName">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="modal-footer">
-						<button class="btn dark btn-outline" type="button" ng-click="close();">Close</button>
-						<button class="btn green" type="submit">Save</button>
-					</div>
-					
-				</form>
-			</div>
-		</div>
-	</div>
-	
 	
 	<div ng-switch-when="categoryDetail" ng-init="detailCategoryModal();">
 		<div class="modal-dialog">
@@ -119,27 +78,14 @@
 					<div class="form-horizontal">
 						<div class="form-body">
 							<div class="form-group custom">
-								<div class="col-md-3">
-									<label class="control-label">Category Name</label>
-									<div class="horizontal-gap"></div>
-									<label class="control-label">Create Time</label>
-									<div class="horizontal-gap"></div>
-									<label class="control-label">Update Time</label>
-									<div class="horizontal-gap"></div>
-								</div>
+								<label class="col-md-3 control-label left">Category Name:</label>
 								<div class="col-md-9">
-									<input type="text" class="form-control" ng-value="form.categoryName">
-									<div class="horizontal-gap"></div>
-									<input type="text" class="form-control" ng-value="form.createTime | dateFormat:'dd/MM/yyyy hh:mm a'">
-									<div class="horizontal-gap"></div>
-									<input type="text" class="form-control" ng-value="form.updateTime">
-									<div class="horizontal-gap"></div>
+									<input type="text" class="form-control" ng-model="form.categoryName" data-ng-disabled="form.categoryName">
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
 				<div class="modal-footer">
 					<button class="btn green" type="button" ng-click="close();">Close</button>
 				</div>
@@ -147,4 +93,292 @@
 		</div>
 	</div>
 	
+	<div ng-switch-when="categoryDelete" ng-init="deleteCategoryModal();">
+		<div class="modal-dialog">
+			<div class="modal-content" ng-controller="categoryController">
+					<div class="modal-header">
+						<button class="close" type="button" ng-click="close();"></button>
+						<h4 class="modal-title">Delete Category</h4>
+					</div>
+
+					<div class="modal-body">
+						<div class="form-horizontal">
+							<div class="form-body">
+								<div class="form-group custom">
+									<div class="col-lg-12 col-md-12 col-sm-12">
+										<label class="control-label">Do you want to delete <b>{{categoryName}}</b></label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<button class="btn dark btn-outline" type="button" ng-click="close();">No</button>
+						<button class="btn green" type="button" ng-click="deleteSubmit(true);">Yes</button>
+					</div>
+			</div>
+		</div>
+	</div>
+	
+	<div ng-switch-when="subcategoryCreate" ng-init="createSubcategoryModal();">
+		<div class="modal-dialog">
+			<div class="modal-content" ng-controller="subcategoryController">
+				<form ng-submit="submit(form);">
+					<div class="modal-header">
+						<button class="close" type="button" ng-click="close();"></button>
+						<h4 class="modal-title">Create Subcategory</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-horizontal">
+							<div class="form-body">
+								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Name :</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="form.subcategoryName">
+									</div>
+								</div>
+								<div class="form-group custom" data-ng-controller="categoryController" data-ng-init="getCategoryList();">
+									<label class="col-md-3 control-label left">Category :</label>
+									<div class="col-md-9" data-ng-if="categoryList">
+										<select chosen class="form-control" ng-model="form.categoryId">
+											<option data-ng-repeat="category in categoryList" value="{{category.categoryId}}">{{category.categoryName}}</option>
+                                        </select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn dark btn-outline" type="button" ng-click="close();">Close</button>
+						<button class="btn green" type="submit" ng-disabled="!form.categoryId || !form.subcategoryName">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div ng-switch-when="subcategoryUpdate" ng-init="updateSubcategoryModal();">
+		<div class="modal-dialog">
+			<div class="modal-content" ng-controller="subcategoryController">
+				<form ng-submit="submit(form);">
+					<div class="modal-header">
+						<button class="close" type="button" ng-click="close();"></button>
+						<h4 class="modal-title">Update Subcategory</h4>
+					</div>
+
+					<div class="modal-body">
+						<div class="form-horizontal">
+							<div class="form-body">
+								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Name :</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="form.subcategoryName">
+									</div>
+								</div>
+								<div class="form-group custom" data-ng-controller="categoryController" data-ng-init="getCategoryList();">
+									<label class="col-md-3 control-label left">Category :</label>
+									<div class="col-md-9" data-ng-if="categoryList">
+										<select chosen class="form-control" ng-model="form.categoryId">
+											 
+											 <!-- I will send NAME and get id on controller-->
+											
+											
+											<option data-ng-repeat="category in categoryList" value="{{category.categoryId}}">{{category.categoryName}}</option>
+                                        </select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<button class="btn dark btn-outline" type="button" ng-click="close();">Close</button>
+						<button class="btn green" type="submit">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<div ng-switch-when="subcategoryDetail" ng-init="detailSubcategoryModal();">
+		<div class="modal-dialog">
+			<div class="modal-content" ng-controller="subcategoryController">
+				<div class="modal-header">
+					<button class="close" type="button" ng-click="close();"></button>
+					<h4 class="modal-title">Subcategory Details</h4>
+				</div>
+
+				<div class="modal-body">
+					<div class="form-horizontal">
+						<div class="form-body">
+							<div class="form-group custom">
+								<label class="col-md-3 control-label left">Name :</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" ng-value="form.subcategoryName">
+								</div>
+							</div>
+							<div class="form-group custom">
+								<label class="col-md-3 control-label left">Category :</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" ng-value="form.categoryName">
+								</div>
+							</div>
+							<div class="form-group custom">
+								<label class="col-md-3 control-label left">Create Time :</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" ng-value="form.createTime | dateFormat:'dd/MM/yyyy hh:mm a'">
+								</div>
+							</div>
+							<div class="form-group custom">
+								<label class="col-md-3 control-label left">Update Time :</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" ng-value="form.updateTime | dateFormat:'dd/MM/yyyy hh:mm a'">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn green" type="button" ng-click="close();">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div ng-switch-when="subcategoryDelete" ng-init="deleteSubcategoryModal();">
+		<div class="modal-dialog">
+			<div class="modal-content" ng-controller="subcategoryController">
+					<div class="modal-header">
+						<button class="close" type="button" ng-click="close();"></button>
+						<h4 class="modal-title">Delete Subcategory</h4>
+					</div>
+
+					<div class="modal-body">
+						<div class="form-horizontal">
+							<div class="form-body">
+								<div class="form-group custom">
+									<div class="col-lg-12 col-md-12 col-sm-12">
+										<label class="control-label">Do you want to delete <b>{{subcategoryName}}</b></label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<button class="btn dark btn-outline" type="button" ng-click="close();">No</button>
+						<button class="btn green" type="button" ng-click="deleteSubmit(true);">Yes</button>
+					</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div ng-switch-when="productCreate" ng-init="createProductModal();">
+		<div class="modal-dialog full-width">
+			<div class="modal-content">
+				<form ng-submit="submit(form);">
+					
+					<div class="modal-header">
+						<button class="close" type="button" ng-click="close();"></button>
+						<h4 class="modal-title">Create Product</h4>
+					</div>
+
+					<div class="modal-body product-modal">
+						<div class="form-horizontal">
+							<div class="form-body">
+								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Name :</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="form.productName">
+									</div>
+								</div>
+								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Company Name :</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="form.compName">
+									</div>
+								</div>
+								<div class="form-group custom" data-ng-controller="categoryController" data-ng-init="getCategoryList();">
+									<label class="col-md-3 control-label left">Category :</label>
+									<div class="col-md-9" data-ng-if="categoryList">
+										<select chosen multiple class="form-control" ng-model="form.category">
+											<option data-ng-repeat="cat in categoryList" value="{{cat.categoryId}}">{{cat.categoryName}}</option>
+                                        </select>
+									</div>
+								</div>
+								<div class="form-group custom" data-ng-controller="subcategoryController" data-ng-init="getSubcategoryList();">
+									<label class="col-md-3 control-label left">Subcategory :</label>
+									<div class="col-md-9" data-ng-if="subcategoryList">
+										<select chosen multiple class="form-control" ng-model="form.subcategory">
+											<option data-ng-repeat="subcat in subcategoryList" value="{{subcat.subcategoryId}}">{{subcat.subcategoryName}}</option>
+                                        </select>
+									</div>
+								</div>
+								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Deal Category :</label>
+									<div class="col-md-9">
+										<select chosen class="form-control" ng-model="form.dealCategory">
+											<option data-ng-repeat="deal in dealCategoryList">{{deal}}</option>
+                                         </select>
+									</div>
+								</div>
+								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Price :</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="form.price">
+									</div>
+								</div>
+								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Discount Price :</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="form.discPrice">
+									</div>
+								</div>
+								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Tags :</label>
+									<div class="col-md-9">
+										<tags-input data-ng-model="form.tags" add-on-paste="true" placeholder="Add a tag" enforce-max-tags></tags-input>
+									</div>
+								</div>
+								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Summary :</label>
+									<div class="col-md-9">
+										<textarea class="form-control" ng-model="form.summary"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<button class="btn dark btn-outline" type="button" ng-click="close();">Close</button>
+						<button class="btn green" type="submit">Save</button>
+					</div>
+					
+				</form>
+			</div>
+		</div>
+	</div>
+	
 </div>
+
+<!-- Divide Form in 2 parts 
+<div class="form-group custom">
+	<div class="col-md-12">
+		<div class="col-md-6">
+			<label class="col-md-3 control-label left">Price :</label>
+			<div class="col-md-9">
+				<input type="text" class="form-control" ng-model="form.price">
+			</div>
+		</div>
+		<div class="col-md-6">
+			<label class="col-md-3 control-label left">Discount Price :</label>
+			<div class="col-md-9">
+				<input type="text" class="form-control" ng-model="form.abc">
+			</div>
+		</div>
+	</div>
+</div> -->
