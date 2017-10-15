@@ -1,4 +1,4 @@
-adminApp.controller('productController',['$scope','productService','modals','$state', function($scope, productService, modals, $state) {
+adminApp.controller('productController',['$scope','productService','subcategoryService','categoryService','modals','$state', function($scope, productService, subcategoryService, categoryService, modals, $state) {
 	
 	$scope.productCreate = function(){
         var promise = modals.open("productCreate");
@@ -26,9 +26,37 @@ adminApp.controller('productController',['$scope','productService','modals','$st
         );
     }
 	
-	$scope.getProductList = function() {
+	$scope.getParentList = function(getProductListCallback) {
+		$scope.parentList = {};
+		categoryService.getCategoryList().success(function(categoryResponse) {
+			$scope.parentList = categoryResponse.data;
+			subcategoryService.getSubcategoryList().success(function(subcategoryResponse) {
+				angular.forEach(subcategoryResponse.data, function(i) {
+					angular.forEach($scope.parentList, function(j){
+						if(i.categoryId == j.categoryId) {
+							j.subcategoryId = i.subcategoryId;
+							j.subcategoryName = i.subcategoryName;
+						}
+					});
+				});		
+				$scope.getProductListCallback();
+			});
+		});
+	};
+	
+	$scope.getProductListCallback = function() {
 		productService.getProductList().success(function(response){
 			$scope.productList = response.data;
+			angular.forEach($scope.productList, function(i){
+				angular.forEach($scope.parentList, function(j){
+					angular.forEach(i.category, function(k){
+						if(k == j.categoryId) {
+							i.categoryName = j.categoryName;
+							i.subcategoryName = j.subcategoryName;
+						}
+					});
+				});
+			});
 		});
 	}
 	

@@ -3,13 +3,13 @@ adminApp.controller('modalController',['$scope','modals', '$rootScope', function
 	$scope.categoryName = "";
 	$scope.subcategoryName = "";
 	
-	$scope.getCategoryList = function() {
+	/*$scope.getCategoryList = function() {
         $rootScope.$emit("categoryListToModal", $scope.categoryList);
     }
 	
 	$scope.getSubcategoryList = function() {
         $rootScope.$emit("subcategoryListToModal", $scope.subcategoryList);
-    }
+    }*/
 	
 	$scope.dealCategoryList = [{key:'normal', value:'Normal'},{key:'topRated', value:'Top-Rated'},{key:'hotDeals', value:'Hot Deals'}];
 	

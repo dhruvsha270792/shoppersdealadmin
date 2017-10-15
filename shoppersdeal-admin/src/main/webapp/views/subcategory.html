@@ -81,7 +81,7 @@
 								<tr ng-class="{even: $even, odd: $odd}" ng-repeat="subcategory in subcategoryList">
 									<td>{{$index+1}}</td>
 									<td><a ng-click="subcategoryDetail(subcategory)">{{subcategory.subcategoryName}}</a></td>
-									<td>{{subcategory.categoryId}}</td>
+									<td>{{subcategory.categoryName}}</td>
 									<td>{{subcategory.createTime | dateFormat:"dd/MM/yyyy hh:mm a"}}</td>
 									<td>{{subcategory.updateTime | dateFormat:"dd/MM/yyyy hh:mm a"}}</td>
 									<td style="text-align: center">
