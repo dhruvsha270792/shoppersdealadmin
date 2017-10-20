@@ -33,7 +33,7 @@
 								</button>
 							</div>
 						</div>
-						<div class="col-md-6 col-lg-6">
+						<!-- <div class="col-md-6 col-lg-6">
 							<div class="actions">
 								<div data-toggle="buttons" class="btn-group btn-group-devided">
 									<label class="btn btn-transparent dark btn-outline btn-square btn-sm">
@@ -53,7 +53,7 @@
 									</label>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<div class="dataTables_wrapper no-footer">
@@ -89,8 +89,8 @@
 							<tbody>
 								<tr ng-class="{even: $even, odd: $odd}" ng-repeat="product in productList">
 									<td><a ng-click="productDetail(product)">{{product.compName}} {{product.productName}}</a></td>
-									<td>{{product.categoryName}}</td>
-									<td>{{product.subcategoryName}}</td>
+									<td>{{product.categoryName | customSplit}}</td>
+									<td>{{product.subcategoryName | customSplit}}</td>
 									<td>{{product.price}}</td>
 									<td>{{product.discPrice}}</td>
 									<td style="text-align: center">
@@ -101,7 +101,7 @@
 							</tbody>
 						</table>
 					</div>
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col lg-6 col-md-6 col-sm-6">
 							<div class="dataTables_length">
 								<label>
@@ -136,7 +136,7 @@
 								</ul>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>

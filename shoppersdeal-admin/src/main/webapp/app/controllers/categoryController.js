@@ -16,7 +16,7 @@ adminApp.controller('categoryController',['$scope','categoryService','$state','m
         var promise = modals.open("categoryUpdate", { categoryName : category.categoryName});
         promise.then(
             function handleResolve(response){
-            	response.categoryId = category.categoryId;
+            	response.id = category.id;
             	categoryService.updateCategory(response).success(function(resp){
             		$state.go("category");
             	});
@@ -39,7 +39,7 @@ adminApp.controller('categoryController',['$scope','categoryService','$state','m
         promise.then(
             function handleResolve(response){
             	if(response) {
-            		categoryService.deleteCategory({ categoryId : category.categoryId}).success(function(resp){
+            		categoryService.deleteCategory({ id : category.id}).success(function(resp){
                 		$state.go("category");
                 	});
             	}

@@ -142,7 +142,7 @@
 									<label class="col-md-3 control-label left">Category :</label>
 									<div class="col-md-9" data-ng-if="categoryList">
 										<select chosen class="form-control" ng-model="form.categoryId">
-											<option data-ng-repeat="category in categoryList" value="{{category.categoryId}}">{{category.categoryName}}</option>
+											<option data-ng-repeat="category in categoryList" value="{{category.id}}">{{category.categoryName}}</option>
                                         </select>
 									</div>
 								</div>
@@ -185,7 +185,7 @@
 											 <!-- I will send NAME and get id on controller-->
 											
 											
-											<option data-ng-repeat="category in categoryList" value="{{category.categoryId}}">{{category.categoryName}}</option>
+											<option data-ng-repeat="category in categoryList" value="{{category.id}}">{{category.categoryName}}</option>
                                         </select>
 									</div>
 								</div>
@@ -283,7 +283,6 @@
 						<button class="close" type="button" ng-click="close();"></button>
 						<h4 class="modal-title">Create Product</h4>
 					</div>
-
 					<div class="modal-body product-modal">
 						<div class="form-horizontal">
 							<div class="form-body">
@@ -303,7 +302,7 @@
 									<label class="col-md-3 control-label left">Category :</label>
 									<div class="col-md-9" data-ng-if="categoryList">
 										<select chosen multiple class="form-control" ng-model="form.category">
-											<option data-ng-repeat="cat in categoryList" value="{{cat.categoryId}}">{{cat.categoryName}}</option>
+											<option data-ng-repeat="cat in categoryList" value="{{cat.id}}">{{cat.categoryName}}</option>
                                         </select>
 									</div>
 								</div>
@@ -311,7 +310,7 @@
 									<label class="col-md-3 control-label left">Subcategory :</label>
 									<div class="col-md-9" data-ng-if="subcategories">
 										<select chosen multiple class="form-control" ng-model="form.subcategory">
-											<option data-ng-repeat="subcat in subcategories" value="{{subcat.subcategoryId}}">{{subcat.subcategoryName}}</option>
+											<option data-ng-repeat="subcat in subcategories" value="{{subcat.id}}">{{subcat.subcategoryName}}</option>
                                         </select>
 									</div>
 								</div>
@@ -336,6 +335,12 @@
 									</div>
 								</div>
 								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Images :</label>
+									<div class="col-md-9">
+										<tags-input data-ng-model="form.images" add-on-paste="true" placeholder="Add an image" enforce-max-tags></tags-input>
+									</div>
+								</div>
+								<div class="form-group custom">
 									<label class="col-md-3 control-label left">Tags :</label>
 									<div class="col-md-9">
 										<tags-input data-ng-model="form.tags" add-on-paste="true" placeholder="Add a tag" enforce-max-tags></tags-input>
@@ -350,13 +355,215 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="modal-footer">
 						<button class="btn dark btn-outline" type="button" ng-click="close();">Close</button>
 						<button class="btn green" type="submit">Save</button>
 					</div>
-					
 				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="product-detail-container" ng-switch-when="productDetail" ng-init="detailProductModal();">
+		<div class="modal-dialog full-width">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" type="button" ng-click="close();"></button>
+					<h4 class="modal-title">Detail Product</h4>
+				</div>
+				<div class="modal-body product-modal">
+					<div class="form-horizontal">
+						<div class="form-body">
+							<div class="form-group custom">
+								<label class="col-md-3 control-label left">Name :</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" ng-model="form.productName">
+								</div>
+							</div>
+							<div class="form-group custom">
+								<label class="col-md-3 control-label left">Company Name :</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" ng-model="form.compName">
+								</div>
+							</div>
+							<div class="form-group custom" data-ng-controller="categoryController" data-ng-init="getCategoryList();">
+								<label class="col-md-3 control-label left">Category :</label>
+								<div class="col-md-9" data-ng-if="categoryList">
+									<select chosen multiple class="form-control" ng-model="form.category">
+										<option data-ng-repeat="cat in categoryList" value="{{cat.id}}">{{cat.categoryName}}</option>
+                                    </select>
+								</div>
+							</div>
+							<div class="form-group custom" data-ng-controller="subcategoryController" data-ng-init="getSubcategories();">
+								<label class="col-md-3 control-label left">Subcategory :</label>
+								<div class="col-md-9" data-ng-if="subcategories">
+									<select chosen multiple class="form-control" ng-model="form.subcategory">
+										<option data-ng-repeat="subcat in subcategories" value="{{subcat.id}}">{{subcat.subcategoryName}}</option>
+                                       </select>
+								</div>
+							</div>
+							<div class="form-group custom">
+								<label class="col-md-3 control-label left">Deal Category :</label>
+								<div class="col-md-9">
+									<select chosen class="form-control" ng-model="form.dealCategory">
+										<option data-ng-repeat="deal in dealCategoryList" value="{{deal.key}}">{{deal.value}}</option>
+                                        </select>
+								</div>
+							</div>
+							<div class="form-group custom">
+								<label class="col-md-3 control-label left">Price :</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" ng-model="form.price">
+								</div>
+							</div>
+							<div class="form-group custom">
+								<label class="col-md-3 control-label left">Discount Price :</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" ng-model="form.discPrice">
+								</div>
+							</div>
+							<div class="form-group custom">
+								<label class="col-md-3 control-label left">Images :</label>
+								<div class="col-md-9">
+									<tags-input data-ng-model="form.images" add-on-paste="true" placeholder="Add an image" enforce-max-tags></tags-input>
+								</div>
+							</div>
+							<div class="form-group custom">
+								<label class="col-md-3 control-label left">Tags :</label>
+								<div class="col-md-9">
+									<tags-input data-ng-model="form.tags" add-on-paste="true" placeholder="Add a tag" enforce-max-tags></tags-input>
+								</div>
+							</div>
+							<div class="form-group custom">
+								<label class="col-md-3 control-label left">Summary :</label>
+								<div class="col-md-9">
+									<textarea class="form-control" ng-model="form.summary"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn dark btn-outline" type="button" ng-click="close();">Close</button>
+					<button class="btn green" type="submit">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="product-create-container" ng-switch-when="productUpdate" ng-init="updateProductModal();">
+		<div class="modal-dialog full-width">
+			<div class="modal-content">
+				<form ng-submit="submit(form);">
+					<div class="modal-header">
+						<button class="close" type="button" ng-click="close();"></button>
+						<h4 class="modal-title">Update Product</h4>
+					</div>
+					<div class="modal-body product-modal">
+						<div class="form-horizontal">
+							<div class="form-body">
+								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Name :</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="form.productName">
+									</div>
+								</div>
+								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Company Name :</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="form.compName">
+									</div>
+								</div>
+								<div class="form-group custom" data-ng-controller="categoryController" data-ng-init="getCategoryList();">
+									<label class="col-md-3 control-label left">Category :</label>
+									<div class="col-md-9" data-ng-if="categoryList">
+										<select chosen multiple class="form-control" ng-model="form.category">
+											<option data-ng-repeat="cat in categoryList" value="{{cat.id}}">{{cat.categoryName}}</option>
+                                        </select>
+									</div>
+								</div>
+								<div class="form-group custom" data-ng-controller="subcategoryController" data-ng-init="getSubcategories();">
+									<label class="col-md-3 control-label left">Subcategory :</label>
+									<div class="col-md-9" data-ng-if="subcategories">
+										<select chosen multiple class="form-control" ng-model="form.subcategory">
+											<option data-ng-repeat="subcat in subcategories" value="{{subcat.id}}">{{subcat.subcategoryName}}</option>
+                                        </select>
+									</div>
+								</div>
+								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Deal Category :</label>
+									<div class="col-md-9">
+										<select chosen class="form-control" ng-model="form.dealCategory">
+											<option data-ng-repeat="deal in dealCategoryList" value="{{deal.key}}">{{deal.value}}</option>
+                                         </select>
+									</div>
+								</div>
+								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Price :</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="form.price">
+									</div>
+								</div>
+								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Discount Price :</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="form.discPrice">
+									</div>
+								</div>
+								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Images :</label>
+									<div class="col-md-9">
+										<tags-input data-ng-model="form.images" add-on-paste="true" placeholder="Add an image" enforce-max-tags></tags-input>
+									</div>
+								</div>
+								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Tags :</label>
+									<div class="col-md-9">
+										<tags-input data-ng-model="form.tags" add-on-paste="true" placeholder="Add a tag" enforce-max-tags></tags-input>
+									</div>
+								</div>
+								<div class="form-group custom">
+									<label class="col-md-3 control-label left">Summary :</label>
+									<div class="col-md-9">
+										<textarea class="form-control" ng-model="form.summary"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn dark btn-outline" type="button" ng-click="close();">Close</button>
+						<button class="btn green" type="submit">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<div ng-switch-when="productDelete" ng-init="deleteProductModal();">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" type="button" ng-click="close();"></button>
+					<h4 class="modal-title">Delete Product</h4>
+				</div>
+
+				<div class="modal-body">
+					<div class="form-horizontal">
+						<div class="form-body">
+							<div class="form-group custom">
+								<div class="col-lg-12 col-md-12 col-sm-12">
+									<label class="control-label">Do you want to delete <b>{{productName}}</b></label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn dark btn-outline" type="button" ng-click="close();">No</button>
+					<button class="btn green" type="button" ng-click="deleteSubmit(true);">Yes</button>
+				</div>
 			</div>
 		</div>
 	</div>

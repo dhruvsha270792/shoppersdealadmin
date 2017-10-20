@@ -16,6 +16,7 @@ adminApp.controller('subcategoryController',['$scope','subcategoryService','cate
         var promise = modals.open("subcategoryUpdate", { subcategory : subcategory});
         promise.then(
             function handleResolve(response){
+            	response.id = subcategory.id;
             	subcategoryService.updateSubcategory(response).success(function(resp){
             		$state.go("subcategory");
             	});
@@ -29,12 +30,12 @@ adminApp.controller('subcategoryController',['$scope','subcategoryService','cate
         promise.then(function handleResolve(response){},function handleReject(response){});
 	};
 	
-	$scope.subcategoryDelete = function(subcategory){
+	$scope.subcategoryDelete = function(subcategory) {
 		var promise = modals.open("subcategoryDelete", { subcategoryName : subcategory.subcategoryName });
         promise.then(
             function handleResolve(response){
             	if(response) {
-            		subcategoryService.deleteSubcategory(subcategory).success(function(resp){
+            		subcategoryService.deleteSubcategory(subcategory.id).success(function(resp){
                 		$state.go("subcategory");
                 	});
             	}
@@ -47,10 +48,10 @@ adminApp.controller('subcategoryController',['$scope','subcategoryService','cate
 	$scope.getSubcategoryList = function() {
 		$scope.subcategoryList = [];
 		categoryService.getCategoryList().success(function(categoryResp){
-			subcategoryService.getSubcategoryList().success(function(response){
+			subcategoryService.getSubcategoryList().success(function(response) {
 				angular.forEach(response.data, function(i) {
 					angular.forEach(categoryResp.data, function(j){
-						if(i.categoryId == j.categoryId) {
+						if(i.categoryId == j.id) {
 							i.categoryName = j.categoryName;
 							$scope.subcategoryList.push(i);
 						}

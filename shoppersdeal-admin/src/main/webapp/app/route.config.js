@@ -22,12 +22,12 @@ angular.module('adminApp')
 		controller: 'loginController',
 	})
 			
-	.state('dashboard',{
+	/*.state('dashboard',{
 		url: "/dashboard",
 		title: 'Dashboard',
 		templateUrl: "views/dashboard.html",
 		controller: 'dashboardController'
-	})
+	})*/
 	
 	.state('category', {
         template: '<div ui-view></div>',
@@ -66,8 +66,7 @@ angular.module('adminApp')
 	
 	.state('default',{
 		url: "/",
-		templateUrl: "views/dashboard.html",
-		controller: 'mainController',
+		redirectTo: 'category'
 	})
 	
 	.state('unauthorized',{
