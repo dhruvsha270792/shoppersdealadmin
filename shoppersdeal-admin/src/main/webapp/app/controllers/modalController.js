@@ -3,7 +3,7 @@ adminApp.controller('modalController',['$scope','modals', '$rootScope', function
 	$scope.categoryName = "";
 	$scope.subcategoryName = "";
 	
-	$scope.dealCategoryList = [{key:'normal', value:'Normal'},{key:'topRated', value:'Top-Rated'},{key:'hotDeals', value:'Hot Deals'}];
+	$scope.dealCategoryList = [{key:'normal', value:'Normal'},{key:'special', value:'Special'},{key:'hotDeals', value:'Hot Deals'}];
 	
 	$scope.createCategoryModal = function(){
 		$scope.form = {};

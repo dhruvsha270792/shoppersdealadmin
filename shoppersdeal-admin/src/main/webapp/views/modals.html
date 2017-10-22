@@ -337,7 +337,7 @@
 								<div class="form-group custom">
 									<label class="col-md-3 control-label left">Images :</label>
 									<div class="col-md-9">
-										<tags-input data-ng-model="form.images" add-on-paste="true" placeholder="Add an image" enforce-max-tags></tags-input>
+										<tags-input data-ng-model="form.images" add-on-comma="false" add-on-paste="false" placeholder="Add an image" enforce-max-tags></tags-input>
 									</div>
 								</div>
 								<div class="form-group custom">
@@ -378,19 +378,19 @@
 							<div class="form-group custom">
 								<label class="col-md-3 control-label left">Name :</label>
 								<div class="col-md-9">
-									<input type="text" class="form-control" ng-model="form.productName">
+									<input type="text" class="form-control" ng-model="form.productName" ng-disabled="form.productName">
 								</div>
 							</div>
 							<div class="form-group custom">
 								<label class="col-md-3 control-label left">Company Name :</label>
 								<div class="col-md-9">
-									<input type="text" class="form-control" ng-model="form.compName">
+									<input type="text" class="form-control" ng-model="form.compName" ng-disabled="form.compName">
 								</div>
 							</div>
 							<div class="form-group custom" data-ng-controller="categoryController" data-ng-init="getCategoryList();">
 								<label class="col-md-3 control-label left">Category :</label>
 								<div class="col-md-9" data-ng-if="categoryList">
-									<select chosen multiple class="form-control" ng-model="form.category">
+									<select chosen multiple class="form-control" ng-model="form.category" ng-disabled="form.category">
 										<option data-ng-repeat="cat in categoryList" value="{{cat.id}}">{{cat.categoryName}}</option>
                                     </select>
 								</div>
@@ -398,7 +398,7 @@
 							<div class="form-group custom" data-ng-controller="subcategoryController" data-ng-init="getSubcategories();">
 								<label class="col-md-3 control-label left">Subcategory :</label>
 								<div class="col-md-9" data-ng-if="subcategories">
-									<select chosen multiple class="form-control" ng-model="form.subcategory">
+									<select chosen multiple class="form-control" ng-model="form.subcategory" ng-disabled="form.subcategory">
 										<option data-ng-repeat="subcat in subcategories" value="{{subcat.id}}">{{subcat.subcategoryName}}</option>
                                        </select>
 								</div>
@@ -406,7 +406,7 @@
 							<div class="form-group custom">
 								<label class="col-md-3 control-label left">Deal Category :</label>
 								<div class="col-md-9">
-									<select chosen class="form-control" ng-model="form.dealCategory">
+									<select chosen class="form-control" ng-model="form.dealCategory" ng-disabled="form.dealCategory">
 										<option data-ng-repeat="deal in dealCategoryList" value="{{deal.key}}">{{deal.value}}</option>
                                         </select>
 								</div>
@@ -414,39 +414,38 @@
 							<div class="form-group custom">
 								<label class="col-md-3 control-label left">Price :</label>
 								<div class="col-md-9">
-									<input type="text" class="form-control" ng-model="form.price">
+									<input type="text" class="form-control" ng-model="form.price" ng-disabled="form.price">
 								</div>
 							</div>
 							<div class="form-group custom">
 								<label class="col-md-3 control-label left">Discount Price :</label>
 								<div class="col-md-9">
-									<input type="text" class="form-control" ng-model="form.discPrice">
+									<input type="text" class="form-control" ng-model="form.discPrice" ng-disabled="form.discPrice">
 								</div>
 							</div>
 							<div class="form-group custom">
 								<label class="col-md-3 control-label left">Images :</label>
 								<div class="col-md-9">
-									<tags-input data-ng-model="form.images" add-on-paste="true" placeholder="Add an image" enforce-max-tags></tags-input>
+									<tags-input data-ng-model="form.images" add-on-paste="true" placeholder="." enforce-max-tags ng-disabled="form.images"></tags-input>
 								</div>
 							</div>
 							<div class="form-group custom">
 								<label class="col-md-3 control-label left">Tags :</label>
 								<div class="col-md-9">
-									<tags-input data-ng-model="form.tags" add-on-paste="true" placeholder="Add a tag" enforce-max-tags></tags-input>
+									<tags-input data-ng-model="form.tags" add-on-paste="true" placeholder="." enforce-max-tags ng-disabled="form.images"></tags-input>
 								</div>
 							</div>
 							<div class="form-group custom">
 								<label class="col-md-3 control-label left">Summary :</label>
 								<div class="col-md-9">
-									<textarea class="form-control" ng-model="form.summary"></textarea>
+									<textarea class="form-control" ng-model="form.summary" ng-disabled="form.summary"></textarea>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button class="btn dark btn-outline" type="button" ng-click="close();">Close</button>
-					<button class="btn green" type="submit">Save</button>
+					<button class="btn green btn-outline" type="button" ng-click="close();">Close</button>
 				</div>
 			</div>
 		</div>
@@ -514,7 +513,7 @@
 								<div class="form-group custom">
 									<label class="col-md-3 control-label left">Images :</label>
 									<div class="col-md-9">
-										<tags-input data-ng-model="form.images" add-on-paste="true" placeholder="Add an image" enforce-max-tags></tags-input>
+										<tags-input data-ng-model="form.images" add-on-comma="false" add-on-paste="false" placeholder="Add an image" enforce-max-tags></tags-input>
 									</div>
 								</div>
 								<div class="form-group custom">
