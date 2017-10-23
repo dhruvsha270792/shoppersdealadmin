@@ -23,10 +23,10 @@ a[ ng-click ]:hover{
 }
 
 div.m-modals {
-    background-color: rgba( 0, 0, 0, 0.8 ) ;
+    background-color: transparent ;
     bottom: 0px ;
     left: 0px ;
-    position: fixed ;
+    position: fixed;
     right: 0px ;
     top: 0px ;
 }
@@ -52,7 +52,8 @@ div.m-modals.ng-hide {
 }
 
 .modal-body.product-modal {
-	height: 400px;
+	max-height: 400px;
+    min-height: 350px;
     overflow-y: auto;
 }
 
@@ -81,11 +82,19 @@ a.jump:hover {
     color: #000000 ;
 }
 
+.form-horizontal .control-label {
+    text-align: left;
+}
+
+.form-group.custom .col-md-10 {
+    float: left;
+}
+
 .form-group.custom {
     margin: 0 0 10px 0;
 }
 
-.form-group.custom .col-md-3.control-label.left {
+.form-group.custom .col-md-4.control-label {
 	text-align: left !important;
 }
 

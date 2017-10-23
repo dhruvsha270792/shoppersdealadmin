@@ -1,6 +1,6 @@
 angular.module('adminApp')
 .run(['$rootScope', '$state',function($rootScope, $state) {
-	$rootScope.SERVER_BASEURL="http://localhost:8080/sdp";
+	$rootScope.SERVER_BASEURL="http://localhost:8080/shoppersdealpoint";
 	
 	$rootScope.$on('$stateChangeSuccess', function(evt, toState, fromState, params) {
 		window.onload = loadAutoScroll;
@@ -13,21 +13,23 @@ angular.module('adminApp')
 	});
 	
 }])
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, tagsInputConfigProvider) {
+	tagsInputConfigProvider.setDefaults('tagsInput', { placeholder: '' });
+	
 	$stateProvider
 	
 	.state('login',{
 		url: "/login",
-		templateUrl: "view/login.html",
-		controller: 'loginController',
+		templateUrl: "views/login.html",
+		controller: 'mainController',
 	})
 			
-	/*.state('dashboard',{
+	.state('dashboard',{
 		url: "/dashboard",
 		title: 'Dashboard',
 		templateUrl: "views/dashboard.html",
 		controller: 'dashboardController'
-	})*/
+	})
 	
 	.state('category', {
         template: '<div ui-view></div>',
