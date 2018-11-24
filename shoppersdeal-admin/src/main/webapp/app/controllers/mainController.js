@@ -1,4 +1,4 @@
-adminApp.controller('mainController',['$scope','mainService','sessionService', function($scope, mainService, sessionService){
+adminApp.controller('mainController',['$scope','mainService','sessionService','$rootScope', function($scope, mainService, sessionService, $rootScope){
 	
 	$scope.loginBtn='Login';
 	$scope.errorMsg="";
@@ -12,31 +12,10 @@ adminApp.controller('mainController',['$scope','mainService','sessionService', f
 				var userDetails={}
 				userDetails.userName=credentials.u;
 				userDetails.token=response.token;
-				userDetails.advertiserId=response.advertiserId;
-				userDetails.timeZone=response.timeZone;
-				userDetails.timeOffSet=response.timeOffSet;
-				userDetails.angularTimeZone=response.angularTimeZone;
-				userDetails.reportCtr=response.reportCtr;
-				userDetails.dashboardCtr=response.dashboardCtr;
-				userDetails.userInactiveTime=response.userInactiveTime;
-				userDetails.campaignBudgetLimit=response.campaignBudgetLimit;
 				
-				sessionService.create(userDetails);
-				 
-				if(window.path==undefined || window.path=="" ) {
-					//$location.path('dashboard').replace();
-					//$window.location.reload();
-					//window.location.href='#/dashboard';
-					$state.go('dashboard');
-					var current = $state.current;
-		            var params = angular.copy($stateParams);
-		            $state.transitionTo(current, params, { reload: true, inherit: true, notify: true });
-		            $window.location.reload();
-				}
-				else {
-					window.location.href=window.path;  
-					$window.location.reload();
-				}
+				sessionService.create(userDetails, 'userDetail');
+				$rootScope.isLogin = true;
+				$state.go('category');
 			}
 			else {
 				$scope.loginBtn='Login';
@@ -46,17 +25,15 @@ adminApp.controller('mainController',['$scope','mainService','sessionService', f
 	};
 	//Login
 	
-	
 	//Logout
 	$scope.logout = function() {
 		var getToken = sessionService.get();
-		if(getToken!=null)
-		{
+		if(getToken!=null) {
 		var token = JSON.parse(getToken).token;
 		authService.logout(token).success(function(response) {
 			if(response.success) {
 				sessionService.remove();
-				$scope.Islogin = false;
+				$scope.isLogin = false;
 				window.path = null;
 				$location.path('login').replace();
 			}
@@ -64,6 +41,4 @@ adminApp.controller('mainController',['$scope','mainService','sessionService', f
 		}
 	};
 	//Logout
-	
-	
 }]);

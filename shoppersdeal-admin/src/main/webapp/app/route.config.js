@@ -1,10 +1,20 @@
 angular.module('adminApp')
-.run(['$rootScope', '$state',function($rootScope, $state) {
+.run(['$rootScope', '$state', 'sessionService',function($rootScope, $state, sessionService) {
 	$rootScope.SERVER_BASEURL="http://localhost:8080/shoppersdealpoint";
+	$rootScope.isLogin = true;
 	
 	$rootScope.$on('$stateChangeSuccess', function(evt, toState, fromState, params) {
 		window.onload = loadAutoScroll;
 		window.onscroll = scrollAutoScroll;
+		
+		/*if (sessionService.get('userDetail') != null) {
+	    	var username = JSON.parse(sessionService.get());
+	    	$rootScope.isLogin = true;
+	    }
+		else {
+	    	$rootScope.isLogin = false;
+	    	$state.go('login');
+	    }*/
 		
 		if(toState.redirectTo) {
 	        evt.preventDefault();
